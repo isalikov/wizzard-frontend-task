@@ -1,6 +1,6 @@
 import { defaultTheme } from './defaultTheme';
 
-export type StyledThemeProps = {
+export type ThemedProps = {
   theme?: Theme;
 };
 

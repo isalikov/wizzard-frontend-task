@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-import { StyledTextContainer } from './styled';
+import { StyledText } from './styled';
 import { TextProps } from './types';
 
 export const Text = ({
@@ -11,8 +11,8 @@ export const Text = ({
   weight = 400,
 }: PropsWithChildren<TextProps>) => {
   return (
-    <StyledTextContainer align={align} color={color} size={size} weight={weight}>
+    <StyledText align={align} color={color} size={size} weight={weight}>
       {children}
-    </StyledTextContainer>
+    </StyledText>
   );
 };

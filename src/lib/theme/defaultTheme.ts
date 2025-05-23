@@ -56,7 +56,7 @@ export const defaultTheme = {
         border: {
           default: '#C7CDD6',
           hover: '#8791A1',
-          active: '#1C45ED',
+          active: '#C7CDD6',
         },
       },
     },

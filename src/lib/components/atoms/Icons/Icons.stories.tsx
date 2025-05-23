@@ -44,11 +44,7 @@ const IconWrapper = ({ size }: IconProps) => (
 );
 
 const meta = {
-  title: 'Atoms/Icons',
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
+  title: 'atoms/Icons',
   argTypes: {
     size: {
       control: { type: 'number', min: 12, max: 64 },
