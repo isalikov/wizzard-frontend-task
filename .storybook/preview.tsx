@@ -1,7 +1,9 @@
+import { ThemeProvider } from '@emotion/react';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 
 import { GlobalStyles } from '../src/lib/components';
+import { defaultTheme } from '../src/lib/theme/defaultTheme';
 
 const preview: Preview = {
   parameters: {
@@ -14,6 +16,11 @@ const preview: Preview = {
   },
   decorators: [
     withThemeFromJSXProvider({
+      themes: {
+        default: defaultTheme,
+      },
+      defaultTheme: 'default',
+      Provider: ThemeProvider,
       GlobalStyles,
     }),
   ],
