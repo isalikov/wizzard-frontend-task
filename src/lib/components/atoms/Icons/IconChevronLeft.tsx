@@ -1,6 +1,6 @@
 import { IconProps } from './types';
 
-export const IconCheck = ({ size = 24 }: IconProps) => {
+export const IconChevronLeft = ({ size = 24 }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@ export const IconCheck = ({ size = 24 }: IconProps) => {
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <polyline points="20 6 9 17 4 12"></polyline>
+      <polyline points="15 18 9 12 15 6"></polyline>
     </svg>
   );
 };
