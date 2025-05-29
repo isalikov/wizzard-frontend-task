@@ -2,7 +2,7 @@ import { PropsWithChildren, useMemo } from 'react';
 
 import { Text } from '../../atoms';
 import { getTextColorColor } from './helpers';
-import { StyledButton } from './styled';
+import { StyledButton, StyledButtonContent } from './styled';
 import { ButtonProps } from './types';
 
 export const Button = ({
@@ -16,9 +16,11 @@ export const Button = ({
 
   return (
     <StyledButton {...props} type={type} $fullWidth={fullWidth} variant={variant}>
-      <Text color={color} weight={500} size={16} align="center">
-        {children}
-      </Text>
+      <StyledButtonContent $fullWidth={fullWidth} variant={variant}>
+        <Text color={color} weight={500} size={16} align="center">
+          {children}
+        </Text>
+      </StyledButtonContent>
     </StyledButton>
   );
 };

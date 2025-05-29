@@ -6,7 +6,7 @@ import { ButtonProps, StyledButtonProps } from './types';
 
 export const getTextColorColor = (color: StyledButtonProps['variant']): TextProps['color'] => {
   switch (color) {
-    case 'outlined':
+    case 'secondary':
       return 'primary';
 
     default:
@@ -14,70 +14,56 @@ export const getTextColorColor = (color: StyledButtonProps['variant']): TextProp
   }
 };
 
-export const getDefaultBackground = (theme: Theme) => {
+export const getPrimaryButtonContentCss = (theme: Theme) => {
   return css`
-    background-color: ${theme.colors.button.default.background.default};
+    background-color: ${theme.button.primary.backgroundColor.default};
+    border-color: ${theme.button.primary.borderColor.default};
 
-    &:hover {
-      background-color: ${theme.colors.button.default.background.hover};
+    &:hover:not(:disabled) {
+      background-color: ${theme.button.primary.backgroundColor.hover};
+      border-color: ${theme.button.primary.borderColor.hover};
     }
 
-    &:active {
-      background-color: ${theme.colors.button.default.background.active};
+    &:active:not(:disabled) {
+      background-color: ${theme.button.primary.backgroundColor.pressed};
+      border-color: ${theme.button.primary.borderColor.pressed};
+    }
+
+    &:disabled {
+      background-color: ${theme.button.primary.backgroundColor.disabled};
+      border-color: ${theme.button.primary.borderColor.disabled};
     }
   `;
 };
 
-export const getOutlinedBackground = (theme: Theme) => {
+export const getSecondaryButtonContentCss = (theme: Theme) => {
   return css`
-    background-color: transparent;
-  `;
-};
+    background-color: ${theme.button.secondary.backgroundColor.default};
+    border-color: ${theme.button.secondary.borderColor.default};
 
-export const getDefaultBorderProps = (theme: Theme) => {
-  return css`
-    border: 1px solid ${theme.colors.button.default.border.default};
-
-    &:hover {
-      border: 1px solid ${theme.colors.button.default.border.hover};
+    &:hover:not(:disabled) {
+      background-color: ${theme.button.secondary.backgroundColor.hover};
+      border-color: ${theme.button.secondary.borderColor.hover};
     }
 
-    &:active {
-      border: 1px solid ${theme.colors.button.default.border.active};
-    }
-  `;
-};
-
-export const getOutlinedBorderProps = (theme: Theme) => {
-  return css`
-    border: 1px solid ${theme.colors.button.outlined.border.default};
-
-    &:hover {
-      border: 1px solid ${theme.colors.button.outlined.border.hover};
+    &:active:not(:disabled) {
+      background-color: ${theme.button.secondary.backgroundColor.pressed};
+      border-color: ${theme.button.secondary.borderColor.pressed};
     }
 
-    &:active {
-      border: 1px solid ${theme.colors.button.outlined.border.active};
+    &:disabled {
+      background-color: ${theme.button.secondary.backgroundColor.disabled};
+      border-color: ${theme.button.secondary.borderColor.disabled};
     }
   `;
 };
 
-export const getBackground = (theme: Theme, variant: ButtonProps['variant']) => {
+export const getButtonContentCss = (theme: Theme, variant: ButtonProps['variant']) => {
   switch (variant) {
-    case 'outlined':
-      return getOutlinedBackground(theme);
+    case 'secondary':
+      return getSecondaryButtonContentCss(theme);
 
     default:
-      return getDefaultBackground(theme);
-  }
-};
-
-export const getBorderProps = (theme: Theme, variant: ButtonProps['variant']) => {
-  switch (variant) {
-    case 'outlined':
-      return getOutlinedBorderProps(theme);
-
-    default:
-      return getDefaultBorderProps(theme);
+      return getPrimaryButtonContentCss(theme);
   }
 };
