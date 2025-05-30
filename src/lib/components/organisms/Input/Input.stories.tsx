@@ -10,85 +10,71 @@ const meta: Meta<typeof Input> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Label text displayed above the input',
-    },
-    required: {
-      control: 'boolean',
-      description: 'Makes the input required and removes the (Optional) text',
-    },
-    error: {
-      control: 'boolean',
-      description: 'Displays the input in error state',
-    },
-    placeholder: {
-      control: 'text',
-      description: 'Placeholder text for the input',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Disables the input',
-    },
-    onChange: { action: 'changed' },
+    label: { control: 'text' },
+    placeholder: { control: 'text' },
+    disabled: { control: 'boolean' },
+    error: { control: 'boolean' },
+    required: { control: 'boolean' },
+    fullWidth: { control: 'boolean' },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Input>;
 
+// Basic input with label
 export const Default: Story = {
   args: {
     label: 'Input field',
-    placeholder: 'Enter value',
+    placeholder: 'Enter text...',
   },
 };
 
+// Required input
 export const Required: Story = {
   args: {
-    label: 'Required field',
-    required: true,
+    label: 'Required input',
     placeholder: 'This field is required',
+    required: true,
   },
 };
 
+// Input with error state
 export const WithError: Story = {
   args: {
-    label: 'Error state',
+    label: 'Input with error',
+    placeholder: 'Error state',
     error: true,
-    placeholder: 'Error state example',
-    defaultValue: 'Invalid input',
+    value: 'Invalid input',
   },
 };
 
+// Disabled input
 export const Disabled: Story = {
   args: {
     label: 'Disabled input',
-    disabled: true,
     placeholder: 'This input is disabled',
+    disabled: true,
   },
 };
 
-export const WithValue: Story = {
+// Full width input
+export const FullWidth: Story = {
   args: {
-    label: 'Input with value',
-    defaultValue: 'Prefilled value',
+    label: 'Full width input',
+    placeholder: 'This input takes full width',
+    fullWidth: true,
+  },
+  parameters: {
+    layout: 'padded',
   },
 };
 
-export const LongLabel: Story = {
+// Optional input (explicitly showing optional label)
+export const Optional: Story = {
   args: {
-    label: 'This is a very long label that might wrap to multiple lines to test the layout',
-    placeholder: 'Input with long label',
+    label: 'Optional input',
+    placeholder: 'Optional field',
+    required: false,
   },
-};
-
-export const FormExample: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
-      <Input label="First Name" required placeholder="Enter your first name" />
-      <Input label="Last Name" required placeholder="Enter your last name" />
-      <Input label="Phone" placeholder="Enter your phone number (optional)" />
-    </div>
-  ),
 };

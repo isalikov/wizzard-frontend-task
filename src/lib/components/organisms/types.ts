@@ -1,4 +1,5 @@
 export type BaseInputProps = {
-  $error?: boolean;
-  $fullWidth?: boolean;
+  $disabled: boolean;
+  $error: boolean;
+  $fullWidth: boolean;
 };

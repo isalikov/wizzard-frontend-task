@@ -60,16 +60,17 @@ export const defaultTheme = {
   valueInput: {
     actionIconColor: '#8791A1FF',
     alertIconColor: '#EB5A68FF',
-    backgroundColor: { default: 'transparent', disabled: '#F7F7F8FF', danger: '#EB5A68FF' },
+    backgroundColor: { default: 'transparent', disabled: '#F7F7F8FF', danger: '#FFF2F2FF' },
     borderColor: {
-      default: 'transparent',
+      default: '#C7CDD6FF',
       disabled: '#C7CDD6FF',
       danger: '#EB5A68FF',
       focused: '#1C45EDFF',
     },
     boxShadow: '0 1px 3px 0 #E7E8EDFF',
     focusColor: { default: '#1C45EDFF', danger: '#EB5A68FF' },
-    focusShadow: { default: '0 0 0 2px #3371E633', danger: '0 0 0 2px #EB5A6833' },
+    focusShadow: { default: '0 0 0 3px #3371E633', danger: '0 0 0 3px #EB5A6833' },
     placeholderColor: { default: '#8791A1FF', danger: '#556070FF' },
+    valueColor: { default: '#222832FF', danger: '#222832FF', disabled: '#49505BFF' },
   },
 };
