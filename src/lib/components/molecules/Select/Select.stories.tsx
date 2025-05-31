@@ -19,7 +19,7 @@ const countryOptions: SelectOption[] = [
 ];
 
 const meta: Meta<typeof Select> = {
-  title: 'organisms/Select',
+  title: 'molecules/Select',
   component: Select,
   parameters: {
     layout: 'centered',

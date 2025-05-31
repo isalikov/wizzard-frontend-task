@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Textarea } from './Textarea';
 
 const meta: Meta<typeof Textarea> = {
-  title: 'organisms/Textarea',
+  title: 'molecules/Textarea',
   component: Textarea,
   parameters: {
     layout: 'centered',
