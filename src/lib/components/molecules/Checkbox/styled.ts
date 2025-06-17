@@ -39,6 +39,7 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   & .checkbox-input {
     width: 0;
     height: 0;
+    position: absolute;
 
     &:not(:checked) + .checkbox-control {
       & .checkbox-content-wrapper {

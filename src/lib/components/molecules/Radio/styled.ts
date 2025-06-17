@@ -42,6 +42,7 @@ export const StyledRadio = styled.div<StyledRadioProps>`
   & .radio-input {
     width: 0;
     height: 0;
+    position: absolute;
 
     &:not(:checked) + .radio-control {
       & .radio-content-wrapper {

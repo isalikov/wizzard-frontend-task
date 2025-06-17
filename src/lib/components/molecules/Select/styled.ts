@@ -5,18 +5,6 @@ import { IconAlertCircle, IconChevronDown } from '../../../icons';
 import { getInputCss } from '../shared';
 import { BaseInputProps } from '../types';
 
-export const StyledSelectContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-export const StyledSelectHeaderContainer = styled.div`
-  display: flex;
-  gap: 4px;
-  top: 0;
-`;
-
 export const StyledSelect = styled.select<ThemedProps & BaseInputProps>`
   height: 44px;
   padding: 0 ${(props) => (props.$error ? '50px' : '16px')} 0 16px;
@@ -26,6 +14,7 @@ export const StyledSelect = styled.select<ThemedProps & BaseInputProps>`
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
+  width: 100%;
 
   &::-ms-expand {
     display: none;

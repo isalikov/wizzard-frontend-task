@@ -8,6 +8,11 @@ export const defaultTheme = {
       danger: '#EB5A68FF',
     },
   },
+  modal: {
+    closeIconColor: '#222832FF',
+    closeIconBackgroundColor: '#FFFFFFFF',
+    overlayBackgroundColor: '#00000033',
+  },
   button: {
     primary: {
       backgroundColor: {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -21,7 +22,7 @@ const options = {
     modules: ['node_modules', 'src'],
   },
   entry: {
-    main: ['@babel/polyfill', './src/main.ts'],
+    main: ['./src/main.ts'],
   },
   module: {
     rules: [

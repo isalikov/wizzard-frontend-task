@@ -5,18 +5,6 @@ import { IconAlertCircle } from '../../../icons';
 import { getInputCss } from '../shared';
 import { BaseInputProps } from '../types';
 
-export const StyledInputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-export const StyledHeaderContainer = styled.div`
-  display: flex;
-  gap: 4px;
-  top: 0;
-`;
-
 export const StyledInput = styled.input<ThemedProps & BaseInputProps>`
   height: 44px;
   padding: 0 ${(props) => (props.$error ? '50px' : '16px')} 0 16px;

@@ -1,16 +1,15 @@
 import { HTMLAttributes } from 'react';
 
 export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
-  label: string;
   options: SelectOption[];
-  onChange: (value: string) => void;
-  value: SelectOption['value'];
-
+  name: string;
+  value?: SelectOption['value'];
   disabled?: boolean;
   error?: boolean;
   fullWidth?: boolean;
   placeholder?: string;
   required?: boolean;
+  onChange?: (value: string) => void;
 };
 
 export type SelectOption = {

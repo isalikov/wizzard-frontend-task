@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@emotion/react';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-webpack5';
 
 import { GlobalStyles } from '../src/lib/components';
 import { defaultTheme } from '../src/lib/theme/defaultTheme';
