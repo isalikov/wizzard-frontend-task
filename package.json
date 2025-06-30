@@ -1,7 +1,7 @@
 {
-  "name": "67805006-salikov-iakov",
+  "name": "wizzard-frontend-task",
   "version": "1.0.0",
-  "description": "Test for the vacancy Frontend (React / Vue.js) Developer, UI Team",
+  "description": "Test Task Frontend React Developer, UI Team",
   "main": "index.js",
   "scripts": {
     "build": "webpack -c .webpack/webpack.config",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/fundraiseup-test/67805006-salikov-iakov.git"
+    "url": "git+ssh://git@github.com/isalikov/wizzard-frontend-task.git"
   },
   "author": "Iakov Salikov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fundraiseup-test/67805006-salikov-iakov/issues"
+    "url": "https://github.com/isalikov/wizzard-frontend-task/issues"
   },
-  "homepage": "https://github.com/fundraiseup-test/67805006-salikov-iakov#readme",
+  "homepage": "https://github.com/isalikov/wizzard-frontend-task#readme",
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
       "eslint --fix",

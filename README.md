@@ -1,4 +1,4 @@
-# Тестовое на вакансию Frontend (React / Vue.js) Developer, UI Team
+# Test Task Frontend React Developer, UI Team
 
 ### Requirements
 
