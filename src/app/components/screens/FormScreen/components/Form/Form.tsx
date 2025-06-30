@@ -17,6 +17,7 @@ export const Form = ({ step }: ScreenFormProps) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     dispatch({
       type: 'ON_SUBMIT_STEP',
       payload: currentStep,

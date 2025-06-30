@@ -1,4 +1,11 @@
-import { getChangePayload, getQuestionsGroups, mapResponseToQuestions } from './helpers';
+import { appInitialState } from '@app/state/constants';
+
+import {
+  clearValues,
+  getChangePayload,
+  getQuestionsGroups,
+  mapResponseToQuestions,
+} from './helpers';
 import {
   AppReducer,
   AppState,
@@ -83,16 +90,26 @@ export const reducer: AppReducer = (state, action) => {
       const hasErrors = questionIds.some((id) => errors[id] === 'required');
       const step = !hasErrors ? state.step + 1 : state.step;
 
-      console.log({
-        ...state,
-        step,
-        errors,
-      });
-
       return {
         ...state,
         step,
         errors,
+      };
+    }
+
+    case 'RESET_STATE': {
+      return {
+        ...state,
+        errors: appInitialState.errors,
+        questions: clearValues(state.questions),
+        step: appInitialState.step,
+      };
+    }
+
+    case 'ON_PREV_STEP': {
+      return {
+        ...state,
+        step: state.step - 1,
       };
     }
 

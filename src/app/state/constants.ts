@@ -8,4 +8,5 @@ export const appInitialState: AppState = {
   errors: {},
   questions: {},
   fetchingQuestions: 'idle',
+  touched: false,
 };

@@ -11,8 +11,9 @@ import { AppContext, appInitialState, reducer } from './state';
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, appInitialState);
-  const value = useMemo(() => ({ state, dispatch }), [state, dispatch]);
+  const modalRef = useRef<ModalRef>(null);
 
+  const value = useMemo(() => ({ state, dispatch }), [state, dispatch]);
   const isLoading = useMemo(() => {
     return state.fetchingQuestions !== 'idle' && state.fetchingQuestions === 'pending';
   }, [state.fetchingQuestions]);
@@ -21,7 +22,6 @@ const App = () => {
     return state.step > 0 && state.step === state.questionsGroups.size;
   }, [state.step, state.questionsGroups]);
 
-  const modalRef = useRef<ModalRef>(null);
   const handleOpenModal = () => {
     modalRef.current?.open();
   };
@@ -37,11 +37,40 @@ const App = () => {
     }
   };
 
+  const handleLeaveForm = () => {
+    dispatch({ type: 'RESET_STATE' });
+    modalRef.current?.close();
+  };
+
+  const handleModalClose = () => {
+    if (state.touched && modalRef.current?.isOpen) {
+      if (confirm('Are you sure you want to leave this form?')) {
+        handleLeaveForm();
+      }
+    } else {
+      handleLeaveForm();
+    }
+  };
+
+  const handleEscapeKeyDown = (event: KeyboardEvent) => {
+    if (event.code == 'Escape') {
+      handleModalClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleEscapeKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKeyDown);
+    };
+  }, [handleEscapeKeyDown]);
+
   useEffect(() => {
     fetchQuestions();
   }, []);
 
-  // TODO: loading state is not yet in acceptance criteria
+  // TODO: loading state implementation is not yet in acceptance criteria
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -54,9 +83,9 @@ const App = () => {
           <WelcomeScreen onOpen={handleOpenModal} />
         </StyledAppContainer>
 
-        <Modal ref={modalRef}>
-          {isWizardComplete && <FinalScreen onClose={() => {}} />}
+        <Modal ref={modalRef} onClose={handleModalClose}>
           {!isWizardComplete && <FormScreen />}
+          {isWizardComplete && <FinalScreen onClose={handleLeaveForm} />}
         </Modal>
       </AppContext>
     </ThemeProvider>

@@ -57,6 +57,7 @@ export const getChangePayload = <T extends Question>(
   return {
     ...state,
     errors,
+    touched: true,
     questions: {
       ...state.questions,
       [id]: {
@@ -65,4 +66,13 @@ export const getChangePayload = <T extends Question>(
       },
     },
   };
+};
+
+export const clearValues = (questions: Record<string, Question>) => {
+  return Object.values(questions).reduce<Record<string, Question>>((result, question) => {
+    return {
+      ...result,
+      [question.id]: getInitialQuestionItem(question),
+    };
+  }, {});
 };

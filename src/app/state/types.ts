@@ -93,6 +93,7 @@ export type AppState = {
   errors: Record<QuestionItem['id'], ErrorType | null>;
   questions: Record<Question['id'], Question>;
   fetchingQuestions: FetchingState;
+  touched: boolean;
 };
 
 export type Action =
@@ -105,7 +106,9 @@ export type Action =
   | GenericAction<'ON_SINGLE_CHECKBOX_QUESTION_CHANGE', SingleCheckboxAnswer>
   | GenericAction<'ON_TEXT_QUESTION_CHANGE', TextAnswer>
   | GenericAction<'ON_TEXTAREA_QUESTION_CHANGE', TextareaAnswer>
-  | GenericAction<'ON_SUBMIT_STEP', number>;
+  | GenericAction<'ON_SUBMIT_STEP', number>
+  | GenericAction<'ON_PREV_STEP'>
+  | GenericAction<'RESET_STATE'>;
 
 export type AppReducer = GenericReducer<AppState, Action>;
 

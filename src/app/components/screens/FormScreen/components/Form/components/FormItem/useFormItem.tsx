@@ -18,9 +18,8 @@ export const useFormItem = (id: string) => {
 
   const Question = useMemo(() => {
     switch (question.type) {
-      case 'select': {
+      case 'select':
         return <SelectField id={question.id} />;
-      }
 
       case 'multiple-checkbox':
         return <MultipleCheckboxField id={question.id} />;

@@ -1,8 +1,8 @@
-import { Form } from '@app/components/screens/FormScreen/components';
 import { useAppState } from '@app/hooks';
 import { Text } from '@lib/components';
 import { IconChevronLeft } from '@lib/icons';
 
+import { Form } from './components';
 import {
   StyledFormScreenBackButton,
   StyledFormScreenContainer,
@@ -10,13 +10,17 @@ import {
 } from './styled';
 
 export const FormScreen = () => {
-  const { isFirstStep, steps } = useAppState();
+  const { isFirstStep, steps, dispatch } = useAppState();
+
+  const handleBackButton = () => {
+    dispatch({ type: 'ON_PREV_STEP' });
+  };
 
   return (
     <StyledFormScreenContainer>
       <StyledFormScreenHeader>
         {!isFirstStep && (
-          <StyledFormScreenBackButton type="button">
+          <StyledFormScreenBackButton type="button" onClick={handleBackButton}>
             <IconChevronLeft />
           </StyledFormScreenBackButton>
         )}

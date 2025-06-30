@@ -10,7 +10,7 @@ export const useAppState = () => {
   }, [state.step]);
 
   const isLastStep = useMemo(() => {
-    return state.step > 0 && state.step === state.questionsGroups.size;
+    return state.step > 0 && state.step === state.questionsGroups.size - 1;
   }, [state.step, state.questionsGroups.size]);
 
   const steps = useMemo(() => {
