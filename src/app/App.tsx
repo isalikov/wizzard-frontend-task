@@ -1,4 +1,4 @@
-import { FinalScreen, FormScreen, WelcomeScreen } from '@app/components';
+import { FinalScreen, FormScreen, WelcomeScreen } from '@app/components/screens';
 import { StyledAppContainer } from '@app/styled';
 import { ThemeProvider } from '@emotion/react';
 import { GlobalStyles, Modal, type ModalRef } from '@lib/components';

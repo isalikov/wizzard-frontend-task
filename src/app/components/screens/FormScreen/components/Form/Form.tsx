@@ -31,6 +31,7 @@ export const Form = ({ step }: ScreenFormProps) => {
 
       return formData.get(item.id);
     });
+
     console.log(results);
   };
 

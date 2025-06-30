@@ -1,4 +1,4 @@
-import { Form } from '@app/components/FormScreen/components';
+import { Form } from '@app/components/screens/FormScreen/components';
 import { useAppState } from '@app/hooks';
 import { Text } from '@lib/components';
 import { IconChevronLeft } from '@lib/icons';

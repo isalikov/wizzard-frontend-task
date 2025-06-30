@@ -7,6 +7,12 @@ export const StyledQuestionItem = styled.div`
   width: 100%;
 `;
 
+export const StyledQuestionHeader = styled.div`
+  & *:not(:last-child) {
+    margin-right: 4px;
+  }
+`;
+
 export const StyledQuestionBody = styled.div`
   display: flex;
   flex-direction: column;

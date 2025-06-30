@@ -9,7 +9,7 @@ export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
   fullWidth?: boolean;
   placeholder?: string;
   required?: boolean;
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
 };
 
 export type SelectOption = {

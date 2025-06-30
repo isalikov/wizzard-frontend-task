@@ -1,10 +1,11 @@
+import { TextField } from '@app/components/fields/TextField/TextField';
 import { useAppState } from '@app/hooks';
 import { Checkbox, Input, Radio, Select, SelectOption } from '@lib/components';
 
 import { useMemo } from 'react';
 
 export const useFormItem = (id: string) => {
-  const { questions } = useAppState();
+  const { questions, ...s } = useAppState();
 
   const question = useMemo(() => {
     return questions[id];
@@ -18,7 +19,9 @@ export const useFormItem = (id: string) => {
           value: option,
         }));
 
-        return <Select fullWidth options={options} name={question.id} />;
+        return (
+          <Select onChange={(e) => console.log(e)} fullWidth options={options} name={question.id} />
+        );
       }
 
       case 'single-checkbox':
@@ -44,7 +47,7 @@ export const useFormItem = (id: string) => {
 
       case 'textarea':
       case 'text':
-        return <Input name={question.id} />;
+        return <TextField question={question} />;
 
       default:
         return null;
