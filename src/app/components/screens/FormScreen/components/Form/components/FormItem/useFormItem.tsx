@@ -1,11 +1,16 @@
-import { TextField } from '@app/components/fields/TextField/TextField';
+import {
+  MultipleCheckboxField,
+  RadioField,
+  SelectField,
+  SingleCheckboxField,
+  TextField,
+} from '@app/components/fields';
 import { useAppState } from '@app/hooks';
-import { Checkbox, Input, Radio, Select, SelectOption } from '@lib/components';
 
 import { useMemo } from 'react';
 
 export const useFormItem = (id: string) => {
-  const { questions, ...s } = useAppState();
+  const { questions } = useAppState();
 
   const question = useMemo(() => {
     return questions[id];
@@ -14,40 +19,21 @@ export const useFormItem = (id: string) => {
   const Question = useMemo(() => {
     switch (question.type) {
       case 'select': {
-        const options = question.options.map<SelectOption>((option) => ({
-          label: option,
-          value: option,
-        }));
-
-        return (
-          <Select onChange={(e) => console.log(e)} fullWidth options={options} name={question.id} />
-        );
+        return <SelectField id={question.id} />;
       }
 
-      case 'single-checkbox':
-        return <Checkbox name={question.id} />;
-
       case 'multiple-checkbox':
-        return (
-          <>
-            {question.options.map((option) => (
-              <Checkbox key={option} name={question.id} value={option} label={option} />
-            ))}
-          </>
-        );
+        return <MultipleCheckboxField id={question.id} />;
 
       case 'radio':
-        return (
-          <>
-            {question.options.map((option) => (
-              <Radio key={option} name={question.id} value={option} label={option} />
-            ))}
-          </>
-        );
+        return <RadioField id={question.id} />;
+
+      case 'single-checkbox':
+        return <SingleCheckboxField label={question.text} id={question.id} />;
 
       case 'textarea':
       case 'text':
-        return <TextField question={question} />;
+        return <TextField id={question.id} />;
 
       default:
         return null;

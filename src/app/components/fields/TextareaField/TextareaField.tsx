@@ -1,12 +1,12 @@
 import { useAppState } from '@app/hooks';
 import { TextQuestion } from '@app/state';
-import { Input } from '@lib/components';
+import { Textarea } from '@lib/components';
 
 import { useMemo } from 'react';
 
-import { TextFieldProps } from './types';
+import { TextareaFieldProps } from './types';
 
-export const TextField = ({ id }: TextFieldProps) => {
+export const TextareaField = ({ id }: TextareaFieldProps) => {
   const { dispatch, questions, errors } = useAppState();
   const question = questions[id] as TextQuestion;
 
@@ -16,12 +16,12 @@ export const TextField = ({ id }: TextFieldProps) => {
 
   const handleChange = (value: string) => {
     dispatch({
-      type: 'ON_TEXT_QUESTION_CHANGE',
+      type: 'ON_TEXTAREA_QUESTION_CHANGE',
       payload: { id, value },
     });
   };
 
   return (
-    <Input error={isError} name={question.id} value={question.value} onChange={handleChange} />
+    <Textarea error={isError} name={question.id} value={question.value} onChange={handleChange} />
   );
 };

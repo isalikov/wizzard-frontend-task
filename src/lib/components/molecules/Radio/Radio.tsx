@@ -5,7 +5,7 @@ import { getCheckedInputTextColor } from '../helpers';
 import { StyledRadio } from './styled';
 import { RadioProps } from './types';
 
-export const Radio = ({ label, error, ...props }: RadioProps) => {
+export const Radio = ({ label, error, onChange, ...props }: RadioProps) => {
   const id = useId();
 
   const textColor = useMemo(
@@ -13,13 +13,25 @@ export const Radio = ({ label, error, ...props }: RadioProps) => {
     [props.disabled, error],
   );
 
+  const handleChange = (value: string) => {
+    if (onChange) {
+      onChange(value);
+    }
+  };
+
   return (
     <StyledRadio
       $checked={Boolean(props.checked)}
       $disabled={Boolean(props.disabled)}
       $error={Boolean(error)}
     >
-      <input {...props} type="radio" id={id} className="radio-input" />
+      <input
+        {...props}
+        type="radio"
+        id={id}
+        className="radio-input"
+        onChange={(event) => handleChange(event.target.value)}
+      />
       <label htmlFor={id} className="radio-control">
         <div className="radio-content-wrapper">
           <div className="radio-content" />

@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
+export type SelectProps = Omit<HTMLAttributes<HTMLSelectElement>, 'onChange'> & {
   options: SelectOption[];
   name: string;
   value?: SelectOption['value'];

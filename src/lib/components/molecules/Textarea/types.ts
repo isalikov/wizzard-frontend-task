@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 
-export type TextareaProps = HTMLAttributes<HTMLTextAreaElement> & {
-  label: string;
+export type TextareaProps = Omit<HTMLAttributes<HTMLTextAreaElement>, 'onChange'> & {
+  name: string;
   onChange: (value: string) => void;
 
   value?: string;

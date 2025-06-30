@@ -1,7 +1,7 @@
 import { GetQuestionsListResponse, QuestionItem } from '@app/api';
 
 import { QUESTIONS_PER_STEP } from './constants';
-import { AppState, Question } from './types';
+import { AppState, MultipleCheckboxQuestion, Question } from './types';
 
 const getInitialQuestionItem = (questionItem: QuestionItem): Question => {
   switch (questionItem.type) {
@@ -9,12 +9,6 @@ const getInitialQuestionItem = (questionItem: QuestionItem): Question => {
       return {
         ...questionItem,
         value: new Set(),
-      };
-
-    case 'single-checkbox':
-      return {
-        ...questionItem,
-        value: false,
       };
 
     default:
@@ -47,4 +41,28 @@ export const mapResponseToQuestions = (response: GetQuestionsListResponse) => {
       [questionItem.id]: getInitialQuestionItem(questionItem),
     };
   }, {});
+};
+
+export const getChangePayload = <T extends Question>(
+  state: AppState,
+  id: string,
+  value: T extends MultipleCheckboxQuestion ? Set<string> : string,
+) => {
+  const question = state.questions[id] as T;
+  const errors = {
+    ...state.errors,
+    [id]: null,
+  };
+
+  return {
+    ...state,
+    errors,
+    questions: {
+      ...state.questions,
+      [id]: {
+        ...question,
+        value,
+      },
+    },
+  };
 };

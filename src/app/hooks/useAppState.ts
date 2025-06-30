@@ -3,7 +3,7 @@ import { AppContext } from '@app/state';
 import { use, useMemo } from 'react';
 
 export const useAppState = () => {
-  const { state } = use(AppContext);
+  const { state, dispatch } = use(AppContext);
 
   const isFirstStep = useMemo(() => {
     return state.step === 0;
@@ -19,6 +19,7 @@ export const useAppState = () => {
 
   return {
     ...state,
+    dispatch,
     steps,
     isFirstStep,
     isLastStep,

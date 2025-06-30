@@ -9,9 +9,9 @@ import { StyledCheckboxProps } from './types';
 
 export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   display: flex;
-  align-items: center;
   gap: 6px;
   user-select: none;
+  align-items: flex-start;
 
   & .checkbox-control {
     width: 20px;

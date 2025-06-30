@@ -33,6 +33,9 @@ export const Select = ({
         $fullWidth={Boolean(fullWidth)}
         $disabled={Boolean(props.disabled)}
       >
+        <option key="nil" disabled selected value="">
+          {props.placeholder}
+        </option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

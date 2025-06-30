@@ -1,6 +1,5 @@
 import { ChangeEvent } from 'react';
 
-import { Text } from '../../atoms';
 import {
   StyledActionsContainer,
   StyledCloseButton,
@@ -8,19 +7,11 @@ import {
   StyledIconClose,
   StyledTextarea,
   StyledTextareaContainer,
-  StyledTextareaHeaderContainer,
   StyledTextareaWrapper,
 } from './styled';
 import { TextareaProps } from './types';
 
-export const Textarea = ({
-  label,
-  required,
-  error,
-  fullWidth,
-  onChange,
-  ...props
-}: TextareaProps) => {
+export const Textarea = ({ required, error, fullWidth, onChange, ...props }: TextareaProps) => {
   const handleClearButtonClick = () => {
     onChange('');
   };
@@ -31,16 +22,6 @@ export const Textarea = ({
 
   return (
     <StyledTextareaContainer>
-      <StyledTextareaHeaderContainer>
-        <Text weight={400} size={16} color="primary">
-          {label}
-        </Text>
-        {!required && (
-          <Text weight={400} size={16} color="secondary">
-            (optional)
-          </Text>
-        )}
-      </StyledTextareaHeaderContainer>
       <StyledTextareaWrapper $fullWidth={Boolean(fullWidth)}>
         <StyledTextarea
           {...props}

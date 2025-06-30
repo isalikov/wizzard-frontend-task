@@ -1,46 +1,46 @@
-type BaseResponseItem = {
+export type BaseResponseItem = {
   text: string;
   required: boolean;
 };
 
-type BaseItem = BaseResponseItem & {
+export type BaseItem = BaseResponseItem & {
   id: string;
 };
 
-type MultipleCheckboxItem = BaseItem & {
+export type MultipleCheckboxItem = BaseItem & {
   options: string[];
   type: 'multiple-checkbox';
 };
 
-type RadioItem = BaseItem & {
+export type RadioItem = BaseItem & {
   options: string[];
   type: 'radio';
 };
 
-type Select = BaseItem & {
+export type SelectItem = BaseItem & {
   options: string[];
   type: 'select';
 };
 
-type SingleCheckbox = BaseItem & {
+export type SingleCheckboxItem = BaseItem & {
   type: 'single-checkbox';
 };
 
-type Text = BaseItem & {
+export type TextItem = BaseItem & {
   type: 'text';
 };
 
-type Textarea = BaseItem & {
+export type TextareaItem = BaseItem & {
   type: 'textarea';
 };
 
 export type QuestionItem =
   | MultipleCheckboxItem
   | RadioItem
-  | Select
-  | SingleCheckbox
-  | Text
-  | Textarea;
+  | SelectItem
+  | SingleCheckboxItem
+  | TextItem
+  | TextareaItem;
 
 export type GetQuestionsListResponse = {
   data: QuestionItem[];

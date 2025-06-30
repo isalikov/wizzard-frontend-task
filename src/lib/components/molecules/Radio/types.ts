@@ -2,7 +2,8 @@ import { ThemedProps } from '@lib/theme';
 
 import { HTMLProps } from 'react';
 
-export type RadioProps = Omit<HTMLProps<HTMLInputElement>, 'type'> & {
+export type RadioProps = Omit<HTMLProps<HTMLInputElement>, 'type' | 'onChange'> & {
+  onChange?: (value: string) => void;
   error?: boolean;
   label?: string;
 };

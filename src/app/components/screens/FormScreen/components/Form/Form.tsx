@@ -8,12 +8,7 @@ import { StyledForm, StyledFormBody, StyledFormFooter } from './styled';
 import { ScreenFormProps } from './types';
 
 export const Form = ({ step }: ScreenFormProps) => {
-  const { isLastStep, step: currentStep, questionsGroups, questions } = useAppState();
-
-  if (step !== currentStep) {
-    return null;
-  }
-
+  const { isLastStep, step: currentStep, questionsGroups, questions, dispatch } = useAppState();
   const screenQuestions = useMemo(() => {
     const questionIds = questionsGroups.get(step);
 
@@ -22,18 +17,15 @@ export const Form = ({ step }: ScreenFormProps) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const results = screenQuestions.map((item) => {
-      if (item.type === 'multiple-checkbox') {
-        console.log(item.options);
-      }
-
-      return formData.get(item.id);
+    dispatch({
+      type: 'ON_SUBMIT_STEP',
+      payload: currentStep,
     });
-
-    console.log(results);
   };
+
+  if (step !== currentStep) {
+    return null;
+  }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
